@@ -1,0 +1,1868 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 6,
+  "links": [
+    {
+      "icon": "external link",
+      "tags": [
+        "API-3 3rd Level Validations"
+      ],
+      "type": "dashboards"
+    }
+  ],
+  "panels": [
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 18,
+      "title": "1st Level Validations",
+      "type": "row"
+    },
+    {
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 0,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.1.1",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Percentage_Validation\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Functional_Validation_passed\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Functionality",
+      "type": "gauge"
+    },
+    {
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 9,
+        "y": 1
+      },
+      "id": 6,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.1.1",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Percentage_Validation\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Non_Functional_Validation_passed\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Non Functional(Experience)",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 61
+              },
+              {
+                "color": "green",
+                "value": 81
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 17,
+        "y": 1
+      },
+      "id": 12,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.1.1",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Percentage_Validation\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Non_Functional_Host_Validation_passed\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Non Functional(Hosts)",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 16,
+      "title": "2nd Level Validations",
+      "type": "row"
+    },
+    {
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status Code=201"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 62
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 142
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Response Header Contains application/json"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 61
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status Code=201"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status Line Contains 201 Created"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 56
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Response Header Contains application/json"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Response Header server check"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 60
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Response Body Contains ID"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 0,
+        "y": 10
+      },
+      "id": 8,
+      "options": {
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Time"
+          }
+        ]
+      },
+      "pluginVersion": "7.1.1",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Status Code=201\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Status Line\")",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Response Header Contains application/json\")",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Response Header server\")",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Response Body Contains ID\")",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Functionality Validations",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Response Body Contains ID {API=\"API3\", name=\"Validations\"}": "Response Body Contains ID",
+              "Response Body {API=\"API3\", name=\"Validations\"}": "Response Body",
+              "Response Header Contains application/json {API=\"API3\", name=\"Validations\"}": "Response Header Contains application/json",
+              "Response Header server {API=\"API3\", name=\"Validations\"}": "Response Header server check",
+              "Response Header {API=\"API3\", name=\"Validations\"}": "Response Header",
+              "Status Code {API=\"API3\", name=\"Validations\"}": "Status Code",
+              "Status Code=201 {API=\"API3\", name=\"Validations\"}": "Status Code=201",
+              "Status Line {API=\"API3\", name=\"Validations\"}": "Status Line Contains 201 Created"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": "InfluxDB",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Response Time<1000ms"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 110
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Errors=0%"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 116
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Anamolies=0%"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 38
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 9,
+        "y": 10
+      },
+      "id": 10,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Time"
+          }
+        ]
+      },
+      "pluginVersion": "7.1.1",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Response Time<1000ms\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Errors=0%\")",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Anamolies=0%\")\r\n ",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Non Functional(Experience) Validations",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Anamolies=0% {API=\"API3\", name=\"Validations\"}": "Anamolies=0%",
+              "Errors=0% {API=\"API3\", name=\"Validations\"}": "Errors=0%",
+              "Response Time API3": "Response Time",
+              "Response Time<1000ms API3": "Response Time<1000ms",
+              "Response Time<1000ms {API=\"API3\", name=\"Validations\"}": "Response Time<1000ms"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 46
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU<70%"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 79
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Memory<70%"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 84
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU Utilization<70%"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 49
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Memory Utilization<70%"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 39
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Connections>0"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 43
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DB Query time<500ms"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 45
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Downstream Calls>0"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.width",
+                "value": 47
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Third Party Calls>0"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 0,
+                    "text": "1",
+                    "to": "",
+                    "type": 1,
+                    "value": "Passed"
+                  },
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "0",
+                    "to": "",
+                    "type": 1,
+                    "value": "Failed"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    },
+                    {
+                      "color": "green",
+                      "value": 1
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 17,
+        "y": 10
+      },
+      "id": 14,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Time"
+          }
+        ]
+      },
+      "pluginVersion": "7.1.1",
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"CPU Utilization<70%\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Memory Utilization<70%\")",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Connections>0\")",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"DB Query time<500ms\")",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Downstream Calls>0\")",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"API_Response\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"Validations\")\r\n  |> filter(fn: (r) => r[\"API\"] == \"API3\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"Third Party Calls>0\")",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Non Functional(Hosts) Validations",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "CPU Utilization<70% {API=\"API3\", name=\"Validations\"}": "CPU Utilization<70%",
+              "CPU<70% {API=\"API3\", name=\"Validations\"}": "CPU<70%",
+              "Connections>0 {API=\"API3\", name=\"Validations\"}": "Connections>0",
+              "DB Query time<500ms {API=\"API3\", name=\"Validations\"}": "DB Query time<500ms",
+              "Downstream Calls>0 {API=\"API3\", name=\"Validations\"}": "Downstream Calls>0",
+              "Memory Utilization<70% {API=\"API3\", name=\"Validations\"}": "Memory Utilization<70%",
+              "Memory<70% {API=\"API3\", name=\"Validations\"}": "Memory<70%",
+              "Third Party Calls>0 {API=\"API3\", name=\"Validations\"}": "Third Party Calls>0"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 26,
+  "style": "dark",
+  "tags": [
+    "API-3 1st & 2nd Level Validations"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-2m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Business Process1 API-3 1st & 2nd Level Validations",
+  "uid": "BFvjr4bnk",
+  "version": 37
+}
